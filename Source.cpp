@@ -43,18 +43,13 @@ int main(int, char**) {
 
 		renderTexture(background, renderer, x, 0);
 		renderTexture(background2, renderer, x2, 0);
-		if (x == -SCREEN_WIDTH) {
-			x = SCREEN_WIDTH;
-		}
-	    if (x2 == -SCREEN_WIDTH) {
-			x2 = SCREEN_WIDTH;
-		}
-		x -= 1;
-		x2 -= 1;
+		if (x == -SCREEN_WIDTH) x = SCREEN_WIDTH;
+	    if (x2 == -SCREEN_WIDTH) x2 = SCREEN_WIDTH;
+		x -= 1; x2 -= 1;
 		auto keys = SDL_GetKeyboardState(NULL);
 		now = SDL_GetTicks();
-			if (now > timePass + ((rand() % 51))) {
-				Enemy::createEnemy(SCREEN_WIDTH, (rand() % (SCREEN_HEIGHT-100)));
+			if (now > timePass + ((rand() % 51))+14) {
+				Enemy::createEnemy(SCREEN_WIDTH, (rand() % ((SCREEN_HEIGHT-100)-150)+100));
 			}
 		timePass = now; 
 		GUNNER.Update(keys);
@@ -62,6 +57,7 @@ int main(int, char**) {
 		Projectile::Update();
 		GUNNER.Draw(renderer);
 		Enemy::Draw(renderer);
+	
 		Projectile::Draw(renderer);
 		
 		SDL_RenderPresent(renderer);

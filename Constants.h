@@ -6,7 +6,7 @@ int rand();
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 const int PROJ_W = 20;
-const int PROJ_H = 2;
+const int PROJ_H = 10;
 const int LSR_SPEED = 20;
 const int ENEMY_W = 40;
 const int ENEMY_H = 40;

@@ -31,7 +31,7 @@ void Enemy::createEnemy(int x, int y, int w = ENEMY_W, int h = ENEMY_H) {
 }
 
 void Enemy::Draw(SDL_Renderer* ren) {
-	SDL_SetRenderDrawColor(ren, (rand() % 256), (rand() % 256), (rand() % 256), 255);
+	SDL_SetRenderDrawColor(ren, (rand() % 256), 180, (rand() % 256), 255);
 	for (Enemy &p : Enemies) {
 		SDL_Rect recta;
 		recta.x = p.x;
@@ -57,7 +57,6 @@ void Enemy::Update() {
 		if (a.x + a.w > 0 && !c) {
 			present.push_back(a);
 		}
-		break;
 	}
 	Enemies = present;
 }
