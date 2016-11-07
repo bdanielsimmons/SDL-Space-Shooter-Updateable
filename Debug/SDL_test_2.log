@@ -1,0 +1,5 @@
+﻿  Source.cpp
+c:\users\bdani\onedrive\documents\visual studio 2015\projects\sdl_test_2\sdl_test_2\constants.h(4): warning C4273: 'rand': inconsistent dll linkage
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdlib.h(343): note: see previous definition of 'rand'
+  SDL_test_2.vcxproj -> C:\Users\bdani\OneDrive\Documents\Visual Studio 2015\Projects\SDL_test_2\Debug\SDL_test_2.exe
+  SDL_test_2.vcxproj -> C:\Users\bdani\OneDrive\Documents\Visual Studio 2015\Projects\SDL_test_2\Debug\SDL_test_2.pdb (Partial PDB)
