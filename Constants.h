@@ -11,6 +11,7 @@ const int LSR_SPEED = 20;
 const int ENEMY_W = 40;
 const int ENEMY_H = 40;
 const int ENEMY_S = -5;
+const int BASE_HEALTH = 100;
 
 int rand()
 {

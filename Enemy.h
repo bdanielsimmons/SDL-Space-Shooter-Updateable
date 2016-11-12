@@ -9,9 +9,9 @@ int ran = SDL_GetTicks();
 
 class Enemy{
 private:
-	static std::vector<Enemy> Enemies;
 	int x, y, w, h;
 public:
+	static std::vector<Enemy> Enemies;
 	Enemy(int x, int y, int w = ENEMY_W, int h = ENEMY_H) {
 		this->x = x;
 		this->y = y;
@@ -47,6 +47,8 @@ void Enemy::Update() {
 	for (Enemy &a : Enemies) {
 		a.x += ENEMY_S;
 		bool c = false;
+		bool d = false;
+		bool e = false;
 		for (Projectile &p : Projectile::Bullets) {
 			c = c || (CheckCollision(a.x, a.y, a.w, a.h, p.x, p.y, p.w, p.h));
 			if (c) {
@@ -54,9 +56,13 @@ void Enemy::Update() {
 				break;
 			}
 		}
-		if (a.x + a.w > 0 && !c) {
-			present.push_back(a);
+		for (Enemy &b : present) {
+			e = e || (CheckCollision(a.x, a.y, a.w, a.h, b.x, b.y, b.w, b.h));
 		}
+			d = d || (CheckCollision(a.x, a.y, a.w, a.h, Player::x, Player::y, Player::w, Player::h));
+			if (a.x + a.w > 0 && !c && a.x + a.w > 0 && !d && !e) {
+				present.push_back(a);
+			}
+		}
+		Enemies = present;
 	}
-	Enemies = present;
-}

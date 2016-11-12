@@ -10,7 +10,7 @@
 #include "Box.h"
 bool running = true;
 SDL_Texture* loadTexture(const std::string &file, SDL_Renderer *ren);
-void renderTexture(SDL_Texture *tex, SDL_Renderer *ren, int x, int y);
+void renderTexture(SDL_Texture *tex, SDL_Renderer *ren, static int, static int);
 SDL_Event e;
 
 
@@ -19,6 +19,7 @@ int main(int, char**) {
 	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
 		return 1;
 	}
+	bool running = true;
 	int x = 0,
 		x2 = -SCREEN_WIDTH;
 
@@ -30,9 +31,8 @@ int main(int, char**) {
 	SDL_QueryTexture(background, NULL, NULL, &bW, &bH);
 	
 	Player GUNNER(100,100, image);
-		
+	SDL_Event e;
 	while(running){
-		SDL_Event e;
 		while (SDL_PollEvent(&e)) {
 			if (e.type == SDL_QUIT) {
 				running = false;
@@ -57,7 +57,6 @@ int main(int, char**) {
 		Projectile::Update();
 		GUNNER.Draw(renderer);
 		Enemy::Draw(renderer);
-	
 		Projectile::Draw(renderer);
 		
 		SDL_RenderPresent(renderer);
@@ -65,11 +64,11 @@ int main(int, char**) {
 	}
 
 
-SDL_Quit();
+	SDL_Quit();
 	return 0;
 }
 
-void renderTexture(SDL_Texture *tex, SDL_Renderer *ren, int x, int y) {
+void renderTexture(SDL_Texture *tex, SDL_Renderer *ren, static int x, static int y) {
 	//Setup the destination rectangle to be at the position we want
 	SDL_Rect dst;
 	dst.x = x;

@@ -6,19 +6,24 @@
 
 class Player {
 private:
-	int x, y, w, h, now, timepass;
+	int now, timepass, health;
 	SDL_Texture* image;
 public:
-	Player(int x, int y, SDL_Texture* image) {
+	static int x, y, w, h;
+	Player(static int x, static int y, SDL_Texture* image, int h = BASE_HEALTH) {
 		this->image = image;
 		this->x = x;
 		this->y = y;
 		SDL_QueryTexture(image, NULL, NULL, &this->w, &this->h);
+		this->health = h;
 	}
 	void Update(const Uint8* keys);
 	void Draw(SDL_Renderer* ren);
 
 };
+
+int Player::x; int Player::y; int Player::w; int Player::h;
+
 
 void Player::Update(const Uint8* keys) {
 	if (keys[SDL_SCANCODE_UP]) y -= 10;
